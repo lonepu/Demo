@@ -1,16 +1,26 @@
-# unit02_code
+# LonePu - My First Flutter Application
 
-A new Flutter project.
+![Flutter](https://img.shields.io/badge/Flutter-%2302569B.svg?style=for-the-badge&logo=Flutter&logoColor=white)
+![Dart](https://img.shields.io/badge/Dart-0175C2?style=for-the-badge&logo=dart&logoColor=white)
+
+A simple Flutter application that displays "LonePu" text on the screen. This is my first Flutter project to learn the basics of Flutter app development.
+
+## Features
+
+- Displays a simple text widget
+- Basic Flutter app structure
+- MaterialApp implementation
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Prerequisites
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter SDK installed
+- Android Studio/VSCode with Flutter plugin
+- Dart plugin
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Installation
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+1. Clone this repository
+   ```sh
+   git clone https://github.com/lonepu/Demo.git
