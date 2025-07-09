@@ -9,12 +9,15 @@ class Question extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: double.infinity,
-      margin: EdgeInsets.all(10),
+      width: double
+          .infinity, // Make the container take the full width of the parent
+      margin: EdgeInsets.all(10), // Set margin around the container
       child: Text(
         questionText,
-        style: TextStyle(fontSize: 28),
-        textAlign: TextAlign.center,
+        style: TextStyle(
+          fontSize: 28,
+        ), // Set the font size for the question text
+        textAlign: TextAlign.center, // Center the text within the container
       ),
     );
   }
