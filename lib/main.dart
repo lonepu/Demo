@@ -4,6 +4,10 @@ import './question.dart';
 
 import './answer.dart';
 
+import './result.dart';
+
+import './quiz.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatefulWidget {
@@ -15,44 +19,68 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   var _questionIndex = 0;
+  var _totalScore = 0; // Variable to keep track of the total score
 
-  void _answerQuestion() {
-    // Function to handle answer selection
+  final _questions = const [
+    {
+      'questionText': 'What\'s your favorite color?',
+      'answers': [
+        {'text': 'Red', 'score': 10},
+        {'text': 'Green', 'score': 5},
+        {'text': 'Blue', 'score': 3},
+      ],
+    },
+    {
+      'questionText': 'What\'s your favorite animal?',
+      'answers': [
+        {'text': 'Dog', 'score': 3},
+        {'text': 'Cat', 'score': 10},
+        {'text': 'Rabbit', 'score': 5},
+      ],
+    },
+    {
+      'questionText': 'What\'s your favorite food?',
+      'answers': [
+        {'text': 'Pizza', 'score': 5},
+        {'text': 'Burger', 'score': 3},
+        {'text': 'Fired Chicken', 'score': 10},
+      ],
+    },
+  ]; // List of questions with their respective answers
+
+  void _resetQuiz() {
     setState(() {
-      _questionIndex = _questionIndex + 1; // Increment the question index
+      _questionIndex = 0; // Reset the question index to 0
+      _totalScore = 0; // Reset the total score to 0
+    });
+  }
+
+  void _answerQuestion(int score) {
+    setState(() {
+      if (_questionIndex < _questions.length) {
+        print("We have more questions!");
+      } else {
+        print("No more questions!"); // Notify when there are no more questions
+      }
+      _totalScore +=
+          score; // Update the total score with the selected answer's score
+      _questionIndex++; // Increment the question index
     });
     print(_questionIndex); // Print the current question index to the console
   }
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': 'What\'s your favorite color?',
-        'answers': ['Red', 'Green', 'Blue'],
-      },
-      {
-        'questionText': 'What\'s your favorite animal?',
-        'answers': ['Dog', 'Cat', 'Rabbit'],
-      },
-      {
-        'questionText': 'What\'s your favorite food?',
-        'answers': ['Pizza', 'Burger', 'Pasta'],
-      },
-    ]; // List of questions with their respective answers
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(title: Text('My First App')),
-        body: Column(
-          children: [
-            Question(questions[_questionIndex]['questionText'] as String),
-            ...(questions[_questionIndex]['answers'] as List<String>).map((
-              answer,
-            ) {
-              return Answer(_answerQuestion, answer);
-            }).toList(),
-          ],
-        ),
+        body: _questionIndex < _questions.length
+            ? Quiz(
+                answerQuestion: _answerQuestion,
+                questionIndex: _questionIndex,
+                questions: _questions,
+              )
+            : Result(_totalScore, _resetQuiz),
       ),
     );
   }
