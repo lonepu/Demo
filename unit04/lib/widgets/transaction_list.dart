@@ -10,6 +10,8 @@ class TransactionList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView(
+      shrinkWrap: true,
+      physics: NeverScrollableScrollPhysics(),
       children: transactions.map((tx) {
         return Card(
           child: Row(
