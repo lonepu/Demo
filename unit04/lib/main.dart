@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:unit04/widgets/user_transaction.dart';
-import 'widgets/transaction_list.dart';
-import 'widgets/new_transaction.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,8 +21,8 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   // String titleInput = '';
   // String amountInput = '';
-  final titleController = TextEditingController();
-  final amountController = TextEditingController();
+  // final titleController = TextEditingController();
+  // final amountController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

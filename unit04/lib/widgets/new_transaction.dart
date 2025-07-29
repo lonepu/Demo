@@ -40,9 +40,9 @@ class NewTransaction extends StatelessWidget {
               // onChanged: (val) => amountInput = val,
             ),
             TextButton(
-              child: Text('Add Transaction'),
               style: TextButton.styleFrom(foregroundColor: Colors.red),
               onPressed: submitData,
+              child: Text('Add Transaction'),
             ),
           ],
         ),
