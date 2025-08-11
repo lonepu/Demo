@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:unit04/widgets/chart.dart';
 import './widgets/transaction_list.dart';
 import './widgets/new_transaction.dart';
-import './models/transaction.dart';
 import './widgets/chart.dart';
+import './models/transaction.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,6 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Personal Expenses',
+      color: Colors.lightBlue,
       theme: ThemeData(
         textTheme: ThemeData.light().textTheme.copyWith(
           displayLarge: TextStyle(
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.orange,
         fontFamily: 'Quicksand',
         appBarTheme: AppBarTheme(
           titleTextStyle: TextStyle(
