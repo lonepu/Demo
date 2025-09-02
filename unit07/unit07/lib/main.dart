@@ -24,11 +24,11 @@ class MyApp extends StatelessWidget {
         textTheme: ThemeData.light().textTheme.copyWith(
           bodyLarge: const TextStyle(
             // replaces body1 → now bodyLarge/bodyMedium/bodySmall
-            backgroundColor: Color.fromRGBO(20, 51, 51, 1),
+            backgroundColor: Color.fromRGBO(255, 254, 229, 1),
           ),
           bodyMedium: const TextStyle(
             // replaces body1 → now bodyLarge/bodyMedium/bodySmall
-            backgroundColor: Color.fromRGBO(20, 51, 51, 1),
+            backgroundColor: Color.fromRGBO(255, 254, 229, 1),
           ),
           titleLarge: TextStyle(
             fontSize: 20,
@@ -39,8 +39,12 @@ class MyApp extends StatelessWidget {
         useMaterial3: true, // enable Material 3
       ),
 
-      home: CategoriesScreen(),
-      routes: {'/categories': (ctx) => CategoryMealsScreen()},
+      // home: CategoriesScreen(),
+      initialRoute: '/',
+      routes: {
+        '/': (ctx) => CategoriesScreen(),
+        CategoryMealsScreen.routName: (ctx) => CategoryMealsScreen(),
+      },
     );
   }
 }
