@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './screens/category_meals_screen.dart';
 import './screens/categories_screen.dart';
+import './screens/meal_detail_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,11 +15,11 @@ class MyApp extends StatelessWidget {
           seedColor: Colors.pink, // replaces primarySwatch
           secondary: Colors.amber, // replaces accentColor
         ),
-        scaffoldBackgroundColor: const Color.fromRGBO(
+        scaffoldBackgroundColor: const Color.fromARGB(
           255,
-          254,
-          229,
-          1,
+          14,
+          199,
+          255,
         ), // replaces canvasColor
         fontFamily: 'Raleway',
         textTheme: ThemeData.light().textTheme.copyWith(
@@ -26,10 +27,10 @@ class MyApp extends StatelessWidget {
             // replaces body1 → now bodyLarge/bodyMedium/bodySmall
             backgroundColor: Color.fromRGBO(255, 254, 229, 1),
           ),
-          bodyMedium: const TextStyle(
-            // replaces body1 → now bodyLarge/bodyMedium/bodySmall
-            backgroundColor: Color.fromRGBO(255, 254, 229, 1),
-          ),
+          // bodyMedium: const TextStyle(
+          // replaces body1 → now bodyLarge/bodyMedium/bodySmall
+          // backgroundColor: Color.fromRGBO(255, 254, 229, 1),
+          // ),
           titleLarge: TextStyle(
             fontSize: 20,
             fontFamily: 'RobotoCondensed',
@@ -44,6 +45,13 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (ctx) => CategoriesScreen(),
         CategoryMealsScreen.routName: (ctx) => CategoryMealsScreen(),
+        MealDetailScreen.routName: (ctx) => MealDetailScreen(),
+      },
+      onGenerateRoute: (settings) {
+        print(settings.arguments);
+      },
+      onUnknownRoute: (settings) {
+        return MaterialPageRoute(builder: (ctx) => CategoriesScreen());
       },
     );
   }
