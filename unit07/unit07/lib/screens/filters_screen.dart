@@ -7,6 +7,7 @@ class FiltersScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(title: Text('Your Filters')),
       backgroundColor: Theme.of(context).colorScheme.secondary,
       body: Center(child: Container(child: Text('Filters'))),
     );
