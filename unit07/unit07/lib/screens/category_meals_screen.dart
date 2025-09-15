@@ -1,24 +1,27 @@
 import 'package:flutter/material.dart';
 import '../widgets/meal_item.dart';
-import '../dummy_data.dart';
 import '../models/meal.dart';
 
 class CategoryMealsScreen extends StatefulWidget {
   static const routName = '/category-meals';
+
+  final List<Meal> availableMeals;
+  CategoryMealsScreen(this.availableMeals);
 
   @override
   State<CategoryMealsScreen> createState() => _CategoryMealsScreenState();
 }
 
 class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
-  String categoryTitle = '';
-  List<Meal> displayedMeals = [];
+  String categoryTitle = ''; // Initial vlaue is I have given that to skip error
+  List<Meal> displayedMeals =
+      []; // Initial vlaue is I have given that to skip error
   var _loaderInitiData = false;
 
   @override
   void initState() {
     super.initState();
-    //...
+    //... not used now
   }
 
   @override
@@ -26,10 +29,11 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     if (!_loaderInitiData) {
       super.didChangeDependencies();
       final routeArgs =
-          ModalRoute.of(context)?.settings.arguments as Map<String, String>?;
-      categoryTitle = routeArgs?['title'] as String;
-      final categoryId = routeArgs?['id'];
-      displayedMeals = DUMMY_MEALS.where((meal) {
+          ModalRoute.of(context)?.settings.arguments
+              as Map<String, String>?; // error မတတ်ရန် ? လေးထည့်ခဲ့ရ
+      categoryTitle = routeArgs?['title'] as String; // difference from Tutorial
+      final categoryId = routeArgs?['id']; // difference from Tutorial
+      displayedMeals = widget.availableMeals.where((meal) {
         return meal.categories.contains(categoryId);
       }).toList();
       _loaderInitiData = true;
@@ -47,9 +51,7 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   Widget build(BuildContext context) {
     //ဒီအပိုင်းက တော်တော်လေး နားလည်ရခက်ပါတယ် နားမလည်သေးပါ ModalRoute ကို နားမလည်
     return Scaffold(
-      appBar: AppBar(
-        title: Text(categoryTitle as String),
-      ), //‌as String က ကိုယ့်ဘာသာကိုယ်ထည့်တာပါ error တက်နေလို့ပါ
+      appBar: AppBar(title: Text(categoryTitle)),
       body: ListView.builder(
         itemBuilder: (ctx, index) {
           return MealItem(
@@ -59,7 +61,6 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
             duration: displayedMeals[index].duration,
             complexity: displayedMeals[index].complexity,
             affordability: displayedMeals[index].affordability,
-            removeItem: _removeMeal,
           );
         },
         itemCount: displayedMeals.length,
