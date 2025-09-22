@@ -1,22 +1,24 @@
 import 'package:flutter/material.dart';
 
-import '../widgets/products_grid.dart';
+class ProductsDetailScreen extends StatelessWidget {
+  // final String title;
+  // final double price;
+  // const ProductsDetailScreen(this.title, this.price, {super.key});
+  static const routeName = '/product-detail';
 
-class ProductsOverviewScreen extends StatelessWidget {
-  const ProductsOverviewScreen({super.key});
-
+  const ProductsDetailScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'MyShop',
+          "title",
           style: TextStyle(color: Theme.of(context).colorScheme.secondary),
         ),
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-      body: ProductsGrid(),
+      body: Center(),
     );
   }
 }
