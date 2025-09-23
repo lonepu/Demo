@@ -9,18 +9,25 @@ class ProductsGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // provider ကနေ products data တွေကို ယူမယ်
+
     final productsData = Provider.of<Products>(context);
     final products = productsData.items;
     return GridView.builder(
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-        childAspectRatio: 3 / 2,
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
+        crossAxisCount: 2, // တစ်ကြောင်းမှာ item ၂ ခု
+        childAspectRatio: 3 / 2, // အလျား/အနံ အချိုး
+        crossAxisSpacing: 10, //ဘေးချင်း ခြားနေမယ့် အကွာအဝေး
+        mainAxisSpacing: 10, // အပေါ်-အောက် ခြားနေမယ့် အကွာအဝေး
       ),
       padding: const EdgeInsets.all(10.0),
+
+      // အကွက်တစ်ခုလုံးကို padding ပေးမယ်
       itemCount: products.length,
+
+      // item တွေရဲ့ အရေအတွက်
       itemBuilder: (ctx, i) => ProductItem(
+        //itemBuilder မှာ product တစ်ခုချင်းစီအတွက် ProductItem widget ကို ခေါ်သုံးပြီး data တွေ ထည့်ပေးတယ်။
         id: products[i].id,
         title: products[i].title,
         imageUrl: products[i].imageUrl,

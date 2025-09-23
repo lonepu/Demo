@@ -3,6 +3,12 @@ import 'package:flutter/material.dart';
 import '/models/product.dart';
 
 class Products with ChangeNotifier {
+  /*
+ChangeNotifier ဆိုတာ Flutter ရဲ့ state management system တစ်ခုဖြစ်တယ်
+
+ဒီ class ထဲမှာ data တွေ ပြောင်းလဲရင် UI ကို update လုပ်ဖို့ သတင်းပို့နိုင်တယ်
+*/
+
   final List<Product> _items = [
     Product(
       id: 'p1',
@@ -39,12 +45,15 @@ class Products with ChangeNotifier {
   ];
 
   List<Product> get items {
+    //Getter method - _items list ကို ပြင်ပက ယူသုံးချင်တဲ့အခါ သုံးတယ်
     return [..._items];
+    //Spread operator သုံးပြီး copy ကူးယူပေးတာ
   }
 
   void addProduct() {
     // _items.add(product);
     notifyListeners();
+    //ဒီ method ခေါ်တာနဲ့ ဒီ Products class ကို listen လုပ်ထားတဲ့ widget တွေ အားလုံး rebuild ဖြစ်မယ်
   }
 
   // Product list and methods to manage products would go here

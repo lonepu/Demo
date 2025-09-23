@@ -8,14 +8,8 @@ class ProductsOverviewScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          'MyShop',
-          style: TextStyle(color: Theme.of(context).colorScheme.secondary),
-        ),
-        backgroundColor: Theme.of(context).colorScheme.primary,
-      ),
-      backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+      appBar: AppBar(title: Text('MyShop')),
+      // body ထဲမှာ ProductsGrid widget ကို ခေါ်သုံးမယ်
       body: ProductsGrid(),
     );
   }
