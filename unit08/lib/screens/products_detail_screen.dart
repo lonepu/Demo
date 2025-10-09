@@ -20,6 +20,7 @@ class ProductsDetailScreen extends StatelessWidget {
     final loadedProduct = Provider.of<Products>(
       context,
     ).items.firstWhere((prod) => prod.id == productID);
+
     return Scaffold(
       // AppBar မှာ product title ကို ပြမယ်
       appBar: AppBar(title: Text(loadedProduct.title)),

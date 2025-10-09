@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '/models/product.dart';
+import './product.dart';
 
 class Products with ChangeNotifier {
   /*
@@ -44,11 +43,34 @@ ChangeNotifier ဆိုတာ Flutter ရဲ့ state management system တစ�
     ),
   ];
 
+  var _showFavouritesOnly = false;
+
   List<Product> get items {
+    // if (_showFavouritesOnly) {
+    //   return _items.where((prodItem) => prodItem.isFavorite).toList();
+    // }
     //Getter method - _items list ကို ပြင်ပက ယူသုံးချင်တဲ့အခါ သုံးတယ်
     return [..._items];
     //Spread operator သုံးပြီး copy ကူးယူပေးတာ
   }
+
+  List<Product> get favoriteItems {
+    return _items.where((prodItem) => prodItem.isFavorite).toList();
+  }
+
+  Product findById(String id) {
+    return _items.firstWhere((prod) => prod.id == id);
+  }
+
+  // void showFavouriteOnly() {
+  //   _showFavouritesOnly = true;
+  //   notifyListeners();
+  // }
+
+  // void showAll() {
+  //   _showFavouritesOnly = false;
+  //   notifyListeners();
+  // }
 
   void addProduct() {
     // _items.add(product);
