@@ -29,12 +29,7 @@ class ProductsGrid extends StatelessWidget {
       // item တွေရဲ့ အရေအတွက်
       itemBuilder: (ctx, i) => ChangeNotifierProvider.value(
         value: products[i],
-        child: ProductItem(
-          //itemBuilder မှာ product တစ်ခုချင်းစီအတွက် ProductItem widget ကို ခေါ်သုံးပြီး data တွေ ထည့်ပေးတယ်။
-          // id: products[i].id,
-          // title: products[i].title,
-          // imageUrl: products[i].imageUrl,
-        ),
+        child: ProductItem(),
       ),
     );
   }
