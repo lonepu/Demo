@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
-
-import '../screens/products_detail_screen.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/cart.dart';
 import '../providers/product.dart';
+import '../screens/products_detail_screen.dart';
 
 class ProductItem extends StatelessWidget {
+  const ProductItem({super.key});
+
   // final String id;
   // final String title;
   // final String imageUrl;
@@ -19,6 +22,7 @@ class ProductItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final product = Provider.of<Product>(context, listen: false);
+    final cart = Provider.of<Cart>(context, listen: false);
     //...
     return ClipRRect(
       // အနားလေးတွေ ဝိုင်းစေဖို့ ClipRRect သုံး
@@ -51,6 +55,7 @@ class ProductItem extends StatelessWidget {
             ),
             trailing: IconButton(
               onPressed: () {
+                cart.addItem(product.id, product.title, product.price);
                 // Handle add to cart action
               },
               icon: Icon(Icons.shopping_cart),

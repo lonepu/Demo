@@ -17,11 +17,23 @@ class CartItem {
 // Cart class ကို ChangeNotifier နဲ့ သုံးထားပါတယ်
 class Cart with ChangeNotifier {
   // _items ဆိုတာက cart ထဲမှာရှိတဲ့ item တွေကို သိမ်းထားတဲ့ map ပါ
-  Map<String, CartItem> _items = {};
+  final Map<String, CartItem> _items = {};
 
   // items getter က _items ကို ပြန်ပေးပါတယ်၊ spread operator နဲ့ copy လုပ်ပေးပါတယ်
   Map<String, CartItem> get items {
     return {..._items};
+  }
+
+  int get itemCount {
+    return _items.length;
+  }
+
+  double get totalAmount {
+    var total = 0.0;
+    _items.forEach((key, cartItem) {
+      total += cartItem.price * cartItem.quantity;
+    });
+    return total;
   }
 
   // addItem method က productId, title, price ကိုယူပြီး cart ထဲထည့်ပေးပါတယ်
@@ -49,5 +61,6 @@ class Cart with ChangeNotifier {
         ),
       );
     }
+    notifyListeners();
   }
 }
