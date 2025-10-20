@@ -63,4 +63,10 @@ class Cart with ChangeNotifier {
     }
     notifyListeners();
   }
+
+  void removeItem(String productId) {
+    // cart မှ item ကို ဖယ်ရှားမယ့် method
+    _items.remove(productId); // productId အရ item ကို ဖယ်ရှား
+    notifyListeners(); // listeners တွေကို အသိပေး
+  }
 }
