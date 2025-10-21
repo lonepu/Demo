@@ -4,8 +4,10 @@ import 'package:provider/provider.dart';
 import 'providers/cart.dart';
 import 'providers/products.dart';
 import 'screens/cart_screen.dart';
+import 'screens/orders_screen.dart';
 import 'screens/products_detail_screen.dart';
 import 'screens/products_overview_screen.dart';
+import 'providers/orders.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,8 +21,9 @@ class MyApp extends StatelessWidget {
     // Products Provider ကို App တစ်လုံးလုံးအတွက် ထည့်သွင်းထားပါတယ်
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider.value(value: Products()),
-        ChangeNotifierProvider.value(value: Cart()),
+        ChangeNotifierProvider(create: (ctx) => Products()),
+        ChangeNotifierProvider(create: (ctx) => Cart()),
+        ChangeNotifierProvider(create: (ctx) => Orders()),
       ],
       child: MaterialApp(
         title: 'MyShop',
@@ -39,6 +42,7 @@ class MyApp extends StatelessWidget {
           // Screen တစ်ခုမှ တစ်ခုသို့ သွားရန် Route တွေ သတ်မှတ်ထားပါတယ်
           ProductsDetailScreen.routeName: (ctx) => ProductsDetailScreen(),
           CartScreen.routeName: (ctx) => CartScreen(),
+          OrdersScreen.routeName: (ctx) => OrdersScreen(),
         },
       ),
     );

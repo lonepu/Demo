@@ -17,7 +17,8 @@ class CartItem {
 // Cart class ကို ChangeNotifier နဲ့ သုံးထားပါတယ်
 class Cart with ChangeNotifier {
   // _items ဆိုတာက cart ထဲမှာရှိတဲ့ item တွေကို သိမ်းထားတဲ့ map ပါ
-  final Map<String, CartItem> _items = {};
+  Map<String, CartItem> _items = {};
+  // removed final *** for clear function ***
 
   // items getter က _items ကို ပြန်ပေးပါတယ်၊ spread operator နဲ့ copy လုပ်ပေးပါတယ်
   Map<String, CartItem> get items {
@@ -67,6 +68,11 @@ class Cart with ChangeNotifier {
   void removeItem(String productId) {
     // cart မှ item ကို ဖယ်ရှားမယ့် method
     _items.remove(productId); // productId အရ item ကို ဖယ်ရှား
+    notifyListeners(); // listeners တွေကို အသိပေး
+  }
+
+  void clear() {
+    _items = {}; // cart ကို အလုံးစုံ ဖယ်ရှား
     notifyListeners(); // listeners တွေကို အသိပေး
   }
 }

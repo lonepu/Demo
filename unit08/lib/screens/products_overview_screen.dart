@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:unit08/screens/cart_screen.dart';
+import 'cart_screen.dart';
 
 import '../providers/cart.dart';
 import '../widgets/products_grid.dart';
+import '../widgets/app_drawer.dart';
 
 enum FilterOptions { Favorites, All }
 
@@ -60,7 +61,7 @@ class _ProductsOverviewScreenState extends State<ProductsOverviewScreen> {
         ],
         title: Text('MyShop'),
       ),
-      // body ထဲမှာ ProductsGrid widget ကို ခေါ်သုံးမယ်
+      drawer: AppDrawer(),
       body: ProductsGrid(_showOnlyFavorites),
     );
   }
