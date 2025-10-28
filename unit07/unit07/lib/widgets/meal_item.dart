@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import '../models/meal.dart';
 import '../screens/meal_detail_screen.dart';
 
@@ -11,15 +12,15 @@ class MealItem extends StatelessWidget {
   final Complexity complexity;
   final Affordability affordability;
 
-  MealItem({
+  const MealItem({
     required this.id,
     required this.title,
     required this.imageUrl,
     required this.duration,
     required this.complexity,
     required this.affordability,
-    Key? key,
-  }) : super(key: key); // I dont know why? but mot to error
+    super.key,
+  }); // I dont know why? but mot to error
 
   String get complexityText {
     String result;
@@ -57,7 +58,6 @@ class MealItem extends StatelessWidget {
       default:
         result = 'Unknown';
     }
-
     return result;
   }
 
